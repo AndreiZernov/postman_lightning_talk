@@ -2,14 +2,13 @@ const path = require('path');
 const async = require('async');
 const newman = require('newman');
 
+// Specify the collection to run.
+const collection = path.join(__dirname, 'customer_onboarding_for_github_action.postman_collection.json');
+
 // Contiunously run the postman test suite
 const continueRun = (numberOfParallelRuns, limitResponseTime) => {
   let commands = [];
-  for (let index = 0; index < numberOfParallelRuns; index++) {
-    commands.push(function (done) {
-      newman.run({ collection: path.join(__dirname, 'customer_onboarding.postman_collection.json') }, done);
-    });
-  }
+  for (let index = 0; index < numberOfParallelRuns; index++) commands.push(done => newman.run({ collection }, done));
 
   // Runs the Postman sample collection in parallel.
   async.parallel(commands, (err, results) => {
@@ -17,7 +16,7 @@ const continueRun = (numberOfParallelRuns, limitResponseTime) => {
     let failuresArray = [];
     let averageResponseTime = 0;
     // Iterate over the results to get the failed requests.
-    results.forEach(function (result) {
+    results.forEach(result => {
       let failures = result?.run?.failures;
       if (failures?.length === 0) failures.failures && failuresArray.push(JSON.stringify(failures.failures, null, 2));
       averageResponseTime = result.run.timings.responseAverage;
@@ -34,4 +33,4 @@ const continueRun = (numberOfParallelRuns, limitResponseTime) => {
   });
 };
 
-continueRun(100, 100);
+continueRun(1, 200);
