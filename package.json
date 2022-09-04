@@ -4,12 +4,14 @@
   "scripts": {
     "postman": "node ./postman/scripts/postman.js ",
     "performance": "node ./postman/scripts/performance.js",
-    "newmanDev": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/development.json",
-    "newmanStaging": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/staging.json",
-    "newmanProd": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/production.json"
+    "newmanDev": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment $(grep '^POSTMAN_ENVIRONMENT_DEV_URI' .env | cut -d '=' -f2 -f3)",
+    "newmanStaging": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment $(grep '^POSTMAN_ENVIRONMENT_STAGING_URI' .env | cut -d '=' -f2 -f3)",
+    "newmanProd": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment $(grep '^POSTMAN_ENVIRONMENT_PROD_URI' .env | cut -d '=' -f2 -f3)",
+    "newmanGithubAction": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment $(grep '^POSTMAN_ENVIRONMENT_DEV_URI' .env | cut -d '=' -f2 -f3) -r cli,htmlextra --reporter-htmlextra-export testResults/htmlreport.html"
   },
   "dependencies": {
     "async": "^3.2.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.2",
     "newman": "^5.3.2",
     "newman-reporter-htmlextra": "^1.22.11",
