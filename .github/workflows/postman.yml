@@ -22,7 +22,7 @@ jobs:
         run: mkdir -p testResults
 
       - name: Run POSTMAN collection
-        run: newman run postman/collections/customer_onboarding_frontend.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html
+        run: newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/customer_onboarding_envs.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export testResults/htmlreport.html
 
       - name: Output the run Details
         uses: actions/upload-artifact@v2
