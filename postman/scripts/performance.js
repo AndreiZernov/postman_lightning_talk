@@ -3,7 +3,7 @@ const async = require('async');
 const newman = require('newman');
 
 // Specify the collection to run.
-const collection = path.join(__dirname, 'customer_onboarding_for_github_action.postman_collection.json');
+const collection = 'https://www.getpostman.com/collections/a66ad17c211a4424e5d9';
 
 // Contiunously run the postman test suite
 const continueRun = (runs, limitResponseTime) => {

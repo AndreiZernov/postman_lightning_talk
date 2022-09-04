@@ -4,9 +4,9 @@
   "scripts": {
     "postman": "node ./postman/scripts/postman.js ",
     "performance": "node ./postman/scripts/performance.js",
-    "newmanDev": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/development.json",
-    "newmanStaging": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/staging.json",
-    "newmanProd": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/production.json"
+    "newmanDev": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/development.json",
+    "newmanStaging": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/staging.json",
+    "newmanProd": "newman run https://www.getpostman.com/collections/a66ad17c211a4424e5d9 --environment postman/environments/production.json"
   },
   "dependencies": {
     "async": "^3.2.0",
