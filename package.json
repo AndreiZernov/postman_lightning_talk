@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "async": "^3.2.0",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.0.2",
     "newman": "^5.3.2",
     "newman-reporter-htmlextra": "^1.22.11",
