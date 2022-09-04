@@ -2,8 +2,11 @@
   "name": "postman_lightning_talk",
   "version": "0.0.1",
   "scripts": {
-    "postman": "node ./postman/postman.js ",
-    "performance": "node ./postman/performance.js"
+    "postman": "node ./postman/scripts/postman.js ",
+    "performance": "node ./postman/scripts/performance.js",
+    "newmanDev": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/development.json",
+    "newmanStaging": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/staging.json",
+    "newmanProd": "newman run postman/collections/customer_onboarding_frontend.postman_collection.json --environment postman/environments/production.json"
   },
   "dependencies": {
     "async": "^3.2.0",
